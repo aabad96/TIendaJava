@@ -1,0 +1,58 @@
+import javax.swing.*;    
+import javax.swing.event.*;  
+package view;
+/**
+ * Clase encargada de crear una tabla que almacene los arrays que nos devuelve la funcion leerdatos de fichero
+ * @author Alejandro
+ */
+public class tabla {    
+      public static void main(String[] args) { 
+    	  //Creamos el lienzo
+            JFrame lienzo = new JFrame("Tabla Productos"); 
+            //Cargamos las imágenes
+            ImageIcon img = new ImageIcon("carita.jpg");
+            ImageIcon img2 = new ImageIcon("icono.jpg");
+            ImageIcon img3 = new ImageIcon("carita.jpg");
+            //Introducimos en el array bidimensional los datos
+            Object fila[][]={ {"Platano","Platano de Canarias","DOS EUROS","DOS Unidades",img},{"Pera","Pera limonera","DOS EUROS","CINCO Unidades",img2},{"Coco","Coco dulce","TRES EUROS","ONCE Unidades",img3} };    
+            //Introducimos los datos de las columnas
+            String columna[]={"Nombre","Descripcion","Precio","Stock","Imagen"}; 
+            //Creamos la tabla como tal
+            final JTable TProductos = new JTable (fila,columna);    
+            //Establece si esta tabla permite tanto una selección de columna como una selección de fila para existir simultáneamente.
+            TProductos.setCellSelectionEnabled(true);  
+            //Sólo se puede seleccionar un índice de lista a la vez. En este modo (SINGLE_SELECTION), reemplazamos la selección actual por el índice representado por el segundo argumento.
+            ListSelectionModel select=TProductos.getSelectionModel();  
+            //Establece el modelo de selecccion
+            select.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); 
+            //Registramos las notificaciones de escuchas
+            select.addListSelectionListener(new ListSelectionListener() {  
+              
+            	//Utilizando la escucha, comprobamos que contiene cada una de las columnas y lo guardamos en una variable inicializada a NULL (Datos)
+            	public void valueChanged(ListSelectionEvent e) {  
+                String Datos = null;  
+                int[] fila = TProductos.getSelectedRows();  
+                int[] columna = TProductos.getSelectedColumns();  
+                for (int i = 0; i < fila.length; i++) {  
+                  for (int j = 0; j < columna.length; j++) {  
+                    Datos = (String) TProductos.getValueAt(fila[i], columna[j]);  
+                  } }  
+                //Imprimimos el contenido de la casilla seleccionada
+                System.out.println("El metodo seleccionado de la tabla es " + Datos);    
+              }
+
+		
+		
+            }); 
+            //Creamos el panel que inluye scroll
+            JScrollPane SP = new JScrollPane(TProductos);    
+            //Añadimos el panel con el scroll
+            lienzo.add(SP);  
+            //Delimitamos el tamaño de la ventana
+            lienzo.setSize(800, 800); 
+            //Seleccionamos si queremos hacer que sea visible
+            lienzo.setVisible(true);
+        
+            
+          }  
+        }  
