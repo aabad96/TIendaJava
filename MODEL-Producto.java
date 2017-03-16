@@ -3,7 +3,7 @@ package model;
  * Clase encargada de gestionar los productos de nuestra tienda
  * @author Alejandro
  */
-public class Producto{
+public class Producto {
   
     private String nombre;
     private String descripcion;
@@ -14,12 +14,12 @@ public class Producto{
     public Producto (){        
     }
 
-    public Producto(String nombre, String descripcion, double precio, int stock, String imagen) {
-   
+    public Producto(String nombre, String descripcion, String precio, String stock, String imagen) {
+    	
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.precio = precio;
-        this.stock = stock;
+        this.precio = Double.parseDouble(precio);
+        this.stock = Integer.parseInt(stock);
         this.imagen = imagen;
     }
 
@@ -39,7 +39,11 @@ public class Producto{
     public int getStock() {
         return stock;
     }
-
+    public String getImagen(){
+    	return imagen;
+    	
+    }
+/*
     public String getDisponibilidad (){
         if (stock > 0){
             return "Stock disponible";
@@ -47,10 +51,7 @@ public class Producto{
             return "Agotado";
         }
     }
+    */
     
-    public String getImagen(){
-    	return imagen;
-    	
-    }
     
 }
