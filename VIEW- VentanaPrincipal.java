@@ -1,30 +1,15 @@
 package view;
 
- 
-
-
 
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.io.File;
-import java.io.FileInputStream;
-import java.util.Properties;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-
 import control.MainController;
 
 
-
-
-
-/**
- * @author  pedro
- */
 public class VentanaPrincipal extends JFrame
 {
 	MainController controlador;
@@ -33,7 +18,7 @@ public class VentanaPrincipal extends JFrame
 		super();
 		
 		// Creamos la vista 
-		setSize(600, 600);
+		setSize(1200, 1200);
 		setTitle("VentanaPrincipal");
 		
 		
@@ -67,10 +52,8 @@ public class VentanaPrincipal extends JFrame
           menu.setMnemonic(KeyEvent.VK_P);
  
           //Submen� 1
-          menuItem = new JMenuItem("Nuevo",
-                                   KeyEvent.VK_N);
-          menuItem.getAccessibleContext().setAccessibleDescription(
-                  "Nuevo");
+          menuItem = new JMenuItem("Nuevo",KeyEvent.VK_N);
+          menuItem.getAccessibleContext().setAccessibleDescription("Nuevo");
           // A�adimos controlador al item de men�
           menuItem.addActionListener(controlador);
           // Asociamos un comando del controlador
@@ -78,10 +61,8 @@ public class VentanaPrincipal extends JFrame
           menu.add(menuItem);
           
           //Submen� 2
-          menuItem = new JMenuItem("Mostrar",
-                                   KeyEvent.VK_M);
-          menuItem.getAccessibleContext().setAccessibleDescription(
-                  "Mostrar");
+          menuItem = new JMenuItem("Mostrar",KeyEvent.VK_M);
+          menuItem.getAccessibleContext().setAccessibleDescription("Mostrar");
           // A�adimos controlador al item de men�
           menuItem.addActionListener(controlador);
           // Asociamos un comando del controlador
