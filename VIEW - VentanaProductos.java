@@ -22,10 +22,17 @@ public class VentanaProductos extends JInternalFrame{
 	JLabel etiquetaNombre;
 	JLabel etiquetaDescripcion;
 	JLabel etiquetaPrecio;
+	JLabel etiquetaStock;
+	JLabel etiquetaImagen;
 	public JTextField campoNombre;
 	public JTextField campoDescripcion;
 	public JTextField campoPrecio;
-	public JButton botonAñadirUsuario;
+	public JTextField campoStock;
+	public JTextField campoImagen;
+	public JButton botonAñadirProducto;
+	
+
+	
 	
 	static int xPos=100;
 	static int yPos=100;
@@ -55,13 +62,13 @@ public class VentanaProductos extends JInternalFrame{
 		
 		this.getContentPane().add(panelDelCombo);
 		this.getContentPane().add(panelDelUsuario);
-		this.setSize(450,125);
+		this.setSize(1200,1200);
 		this.setLocation(xPos, yPos);
         xPos=xPos+10;
         yPos=yPos+10;
 
 		// Dibujo el panel del Combo
-		titulo = new JLabel ("Gestión de Usuarios");
+		titulo = new JLabel ("Crear producto:");
         panelDelCombo.add (titulo);
                		
 		// Dibujo el panel del Usuario
@@ -70,10 +77,14 @@ public class VentanaProductos extends JInternalFrame{
         etiquetaNombre= new JLabel ("Nombre Producto");
         etiquetaDescripcion= new JLabel ("Descripcion");
         etiquetaPrecio= new JLabel ("Precio");
+        etiquetaStock= new JLabel("Stock");
+        etiquetaImagen= new JLabel("Path imagen");
+        campoNombre = new JTextField (10);
         campoDescripcion = new JTextField (10);
-    	campoNombre = new JTextField (10);
-    	campoPrecio = new JTextField (10);
-    	botonAñadirUsuario = new JButton ("Añadir");
+        campoPrecio = new JTextField (10);
+    	campoStock = new JTextField (10);
+    	campoImagen= new JTextField (10);
+    	botonAñadirProducto = new JButton ("Añadir");
 
         panelDelUsuario.add(etiquetaNombre);
 		panelDelUsuario.add(campoNombre);
@@ -81,8 +92,16 @@ public class VentanaProductos extends JInternalFrame{
 		panelDelUsuario.add(campoDescripcion);
 		panelDelUsuario.add(etiquetaPrecio);
 		panelDelUsuario.add(campoPrecio);
-		panelDelUsuario.add(botonAñadirUsuario);
-		botonAñadirUsuario.addActionListener(this.cp);
+		panelDelUsuario.add(etiquetaStock);
+		panelDelUsuario.add(campoStock);
+		panelDelUsuario.add(etiquetaImagen);
+		panelDelUsuario.add(campoImagen);
+		
+		panelDelUsuario.add(botonAñadirProducto);
+		botonAñadirProducto.addActionListener(this.cp);
+		botonAñadirProducto.setActionCommand(cp.add);
+		
+		
 		         
         this.setVisible(true);
         
