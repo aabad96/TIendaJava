@@ -1,15 +1,10 @@
 package control;
+
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.Properties;
-import java.util.Vector;
 
-import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
+
 
 import model.Archivo;
 import model.Producto;
@@ -25,25 +20,29 @@ public class MainController implements ActionListener
 	public final static String MOSTRAR="Tº";
 	
 	VentanaPrincipal ventanaControlada;
-	ArrayList listaProductos = new ArrayList();
+	Producto[] listaProductos = new Producto[20];
 	
-	Archivo miArchivo = new Archivo ("MisProductos.txt");
+	Archivo miArchivo = new Archivo("MisProductos.txt");
 	
 	
 	public MainController(VentanaPrincipal win){
-		ventanaControlada=win;
+		ventanaControlada = win;
 	}
 	
 	
 	public void actionPerformed(ActionEvent e) {
-		// Cambio el cursor por un relog
+		
+		// Cambio el cursor por un reloj
+		
 		Cursor cur = new Cursor(Cursor.WAIT_CURSOR);
+		
         ventanaControlada.setCursor(cur);        
 
     	String cmd = (String)(e.getActionCommand());
         abrirVentana(cmd);
 		
 		// Dejo el cursor como estaba
+        
 		cur = new Cursor(Cursor.DEFAULT_CURSOR);
         ventanaControlada.setCursor(cur);        
     } 
@@ -70,6 +69,8 @@ public class MainController implements ActionListener
 		}
 
 	}	
+    
+    
 
 	public void cerrarVentana()
 	{
@@ -81,18 +82,16 @@ public class MainController implements ActionListener
 	{
 		System.out.println("Starting VentanaPrincipal...");
 		
-		// Leyendo el Properties
-		
-		Properties appProps = new Properties();
-				
-		// Creo la ventana
+
 		VentanaPrincipal mainFrame = new VentanaPrincipal();
 		
 		// Creo el controlador pasando la ventana
-		MainController mc=new MainController(mainFrame);
+		MainController mc = new MainController(mainFrame);
 		
 		// Le Asociamos el controlador a la ventana
+		
 		mainFrame.addController(mc);
+		
 		mainFrame.crearVista();
 		
 	
