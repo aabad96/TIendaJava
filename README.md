@@ -1,3 +1,0 @@
-# TIendaJava
-
-README PARA RELLENAR
