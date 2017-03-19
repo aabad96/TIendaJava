@@ -1,0 +1,77 @@
+package view;
+
+
+import java.awt.event.KeyEvent;
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import control.MainController;
+
+
+public class VentanaPrincipalUsuario extends JFrame
+{
+	MainController controlador;
+	
+	public VentanaPrincipalUsuario () {
+		super();
+		
+		// Creamos la vista 
+		setSize(1200, 1200);
+		setTitle("VentanaPrincipalUsuario");
+		
+		
+	}
+	
+	public void addController (MainController mc) { 
+		controlador=mc;		
+	}
+	
+	public void crearVista ()
+	{
+		crearMenu();
+		
+		setContentPane(new JDesktopPane());
+		setVisible(true);
+	}
+	
+	public void crearMenu ()
+	{	
+
+          JMenuBar menuBar;
+          JMenu menu1;
+          JMenu menu2;
+          JMenu menu3;
+          
+          //Crea la barra de men�
+          menuBar = new JMenuBar();
+          setJMenuBar(menuBar);
+
+          //Primer men�
+          menu1 = new JMenu("Catálogo");
+          menu1.setMnemonic(KeyEvent.VK_C);
+          
+         //Segundo men�
+          menu2 = new JMenu("Carrito");
+          menu2.setMnemonic(KeyEvent.VK_D);
+        
+          //Tercer men�
+          menu3 = new JMenu("Factura");
+          menu3.setMnemonic(KeyEvent.VK_F);
+          
+          // A�adimos controlador a los menu
+          menu1.addActionListener(controlador);
+          menu2.addActionListener(controlador);
+          menu3.addActionListener(controlador);
+          // Asociamos un comando del controlador
+          menu1.setActionCommand(MainController.MOSTRAR);
+          menu1.add(menu1);
+          menu2.setActionCommand(MainController.PRODUCTO);
+          menu2.add(menu2);
+          menu3.setActionCommand(MainController.PRODUCTO);
+          menuBar.add(menu1);
+	}
+
+
+}
