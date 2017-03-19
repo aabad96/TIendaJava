@@ -3,29 +3,27 @@ package control;
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-
-
-import model.Archivo;
+import java.util.Vector;
 import model.Producto;
-
 import view.VentanaProductos;
-import view.VentanaPrincipal;
+import view.VentanaPrincipalAdmin;
 
 
 
 public class MainController implements ActionListener
 {
-	public final static String NUEVO="L";
-	public final static String MOSTRAR="Tº";
+	public final static String NUEVO="N";
+	public final static String MOSTRAR="M";
+	public final static String PRODUCTO="P";
 	
-	VentanaPrincipal ventanaControlada;
-	Producto[] listaProductos = new Producto[20];
+	VentanaPrincipalAdmin ventanaControlada;
 	
-	Archivo miArchivo = new Archivo("MisProductos.txt");
+	public Vector<Producto> listaProductos = new Vector <Producto>();
 	
 	
-	public MainController(VentanaPrincipal win){
+	
+	
+	public MainController(VentanaPrincipalAdmin win){
 		ventanaControlada = win;
 	}
 	
@@ -83,7 +81,7 @@ public class MainController implements ActionListener
 		System.out.println("Starting VentanaPrincipal...");
 		
 
-		VentanaPrincipal mainFrame = new VentanaPrincipal();
+		VentanaPrincipalAdmin mainFrame = new VentanaPrincipalAdmin();
 		
 		// Creo el controlador pasando la ventana
 		MainController mc = new MainController(mainFrame);
